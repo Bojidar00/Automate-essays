@@ -1,0 +1,22 @@
+{
+  "name": "automate-essays",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bojidar00/Automate-essays.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bojidar00/Automate-essays/issues"
+  },
+  "homepage": "https://github.com/Bojidar00/Automate-essays#readme",
+  "dependencies": {
+    "node-dir": "^0.1.17"
+  }
+}
