@@ -1,6 +1,7 @@
 var dir = require('node-dir');
 const fs = require('fs');
 const validator = require('html-validator');
+const markdownlint = require("markdownlint");
 
 var directory="essays";
 
@@ -21,7 +22,7 @@ dir.subdirs(directory, function(err, subdirs) {
             console.log(pattern.test(file));
             if(pattern.test(file)==false){throw new Error('File name does not match criteria.');}
             if(html_pattern.test(file)==true){Check_html(subdir+"/"+file);}
-            if(md_pattern.test(file)==true){}
+            if(md_pattern.test(file)==true){Check_md(subdir+"/"+file);}
         }
     }
 });
@@ -44,5 +45,20 @@ async function Check_html  (html_file_directory) {
       console.error(error)
     }
     
+  }
+
+  async function Check_md  (md_file_directory) {
+    const options = {
+        "files": [ directory+"/"+md_file_directory ]
+      };
+      
+      markdownlint(options, function callback(err, result) {
+        if (!err) {
+          console.log(result.toString());
+        }
+        if(result.toString()==''){console.log("md is valid");}
+        else{throw new Error('MD file "'+md_file_directory+'" is not valid.');}
+      });
+
   }
   
