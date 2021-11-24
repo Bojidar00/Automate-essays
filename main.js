@@ -16,9 +16,9 @@ dir.subdirs(directory, function(err, subdirs) {
         for (const file of files) {
             console.log(file);
             console.log(pattern.test(file));
-            try {
+          //  try {
             if(pattern.test(file)==false){throw new Error('File name does not match criteria.');}
-        } catch (e) {console.error(e);}
+       // } catch (e) {console.error(e);}
         }
     }
 });
