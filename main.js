@@ -39,6 +39,7 @@ async function Check_html  (html_file_directory) {
     try {
       const result = await validator(options)
       console.log(result)
+      if(result.isValid==false){throw new Error('HTML file "'+html_file_directory+'" not valid.');}
     } catch (error) {
       console.error(error)
     }
