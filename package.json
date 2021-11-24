@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Bojidar00/Automate-essays#readme",
   "dependencies": {
+    "html-validator": "^6.0.0",
     "node-dir": "^0.1.17"
   }
 }
