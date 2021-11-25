@@ -28,7 +28,9 @@ jobs:
         cache: 'npm'
     
             
-    - name: Commit check
-    - run: echo "${{ github.event.head_commit.message }}"     
+    
+    - run: echo "${{ github.event.head_commit.message }}"   
+    - if: startsWith(${{ github.event.head_commit.message }},'**')
+    - run: echo "eeeeeeeeeeeee"
     - run: npm ci
     - run: node main.js
