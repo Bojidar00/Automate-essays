@@ -1,4 +1,4 @@
-# Automate-essays
+# Automatic verificator of HTML and MD 
 
 ## Commit Naming Rules
 
