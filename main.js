@@ -1,35 +1,35 @@
-var dir = require('node-dir');
+var node_dir = require('node-dir');
 const fs = require('fs');
 const validator = require('html-validator');
 const markdownlint = require("markdownlint");
 
 var directory="essays";
 
-dir.subdirs(directory, function(err, subdirs) {
+node_dir.subdirs(directory, function(err, sub_dirs) {
     if (err) throw err;
     
-    for (let i = 0; i < subdirs.length; i++) {
-        console.log(subdirs[i]);
-        var subdir =subdirs[i].substring(directory.length +1);
-        const pattern= new RegExp('([a-z]+) - '+subdir);
+    for (let i = 0; i < sub_dirs.length; i++) {
+        console.log(sub_dirs[i]);
+        var sub_dir =sub_dirs[i].substring(directory.length +1);
+        const pattern= new RegExp('([a-z]+) - '+sub_dir);
         const html_pattern= new RegExp('([a-z]+).html');
         const md_pattern= new RegExp('([a-z]+).md');
 
         
-        const files = fs.readdirSync(subdirs[i])
+        const files = fs.readdirSync(sub_dirs[i])
         for (const file of files) {
             console.log(file);
             console.log(pattern.test(file));
             if(pattern.test(file)==false){throw new Error('File name does not match criteria.');}
-            if(html_pattern.test(file)==true){Check_html(subdir+"/"+file);}
-            if(md_pattern.test(file)==true){Check_md(subdir+"/"+file);}
+            if(html_pattern.test(file)==true){check_html(sub_dir+"/"+file);}
+            if(md_pattern.test(file)==true){check_md(sub_dir+"/"+file);}
         }
     }
 });
 
 
 
-async function Check_html  (html_file_directory) {
+async function check_html  (html_file_directory) {
     
     const options = {
       validator: 'WHATWG',
@@ -47,7 +47,7 @@ async function Check_html  (html_file_directory) {
     
   }
 
-  async function Check_md  (md_file_directory) {
+  async function check_md  (md_file_directory) {
     const options = {
         "files": [ directory+"/"+md_file_directory ]
       };
