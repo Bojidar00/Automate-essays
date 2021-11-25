@@ -21,5 +21,5 @@ After every push to the repository, Github actions will check commits, file name
 
 ```bash
 npm install
-npm start
+npm run check
 ```
