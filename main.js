@@ -5,7 +5,6 @@ const markdownLint = require("markdownlint");
 
 
 
-
 var directory="essays";
 
 nodeDir.subdirs(directory, function(err, subDirs) {
