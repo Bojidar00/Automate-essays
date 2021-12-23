@@ -1,11 +1,9 @@
-var nodeDir = require('node-dir');
+let nodeDir = require('node-dir');
 const fs = require('fs');
 const validator = require('html-validator');
 const markdownLint = require("markdownlint");
 
-
-
-var directory="essays";
+let directory="essays";
 
 nodeDir.subdirs(directory, function(err, subDirs) {
     if (err) throw err;
@@ -17,7 +15,6 @@ nodeDir.subdirs(directory, function(err, subDirs) {
         const htmlPattern= new RegExp('([A-Z][a-z]+).html');
         const mdPattern= new RegExp('([A-Z][a-z]+).md');
 
-        
         const files = fs.readdirSync(subDirs[i])
         for (const file of files) {
             console.log(file);
