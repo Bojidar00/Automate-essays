@@ -1,11 +1,9 @@
-var nodeDir = require('node-dir');
+let nodeDir = require('node-dir');
 const fs = require('fs');
 const validator = require('html-validator');
 const markdownLint = require("markdownlint");
 
-
-
-var directory="essays";
+let directory="essays";
 
 nodeDir.subdirs(directory, function(err, subDirs) {
     if (err) throw err;
@@ -13,11 +11,10 @@ nodeDir.subdirs(directory, function(err, subDirs) {
     for (let i = 0; i < subDirs.length; i++) {
         console.log(subDirs[i]);
         var subDir =subDirs[i].substring(directory.length +1);
-        const pattern= new RegExp('([a-z]+) - '+subDir);
-        const htmlPattern= new RegExp('([a-z]+).html');
-        const mdPattern= new RegExp('([a-z]+).md');
+        const pattern= new RegExp('([A-Z][a-z]+) - '+subDir);
+        const htmlPattern= new RegExp('([A-Z][a-z]+).html');
+        const mdPattern= new RegExp('([A-Z][a-z]+).md');
 
-        
         const files = fs.readdirSync(subDirs[i])
         for (const file of files) {
             console.log(file);
@@ -29,10 +26,7 @@ nodeDir.subdirs(directory, function(err, subDirs) {
     }
 });
 
-
-
 async function checkHtml  (htmlFileDirectory) {
-    
     const options = {
       validator: 'WHATWG',
       format: 'text',
@@ -46,21 +40,18 @@ async function checkHtml  (htmlFileDirectory) {
     } catch (error) {
       console.error(error)
     }
+  }
+
+async function checkMd  (mdFileDirectory) {
+  const options = {
+      "files": [ directory+"/"+mdFileDirectory ]
+    };
     
+  markdownLint(options, function callback(err, result) {
+    if (!err) {
+      console.log(result.toString());
+    }
+    if(result.toString()==''){console.log("md is valid");}
+    else{throw new Error('MD file "'+mdFileDirectory+'" is not valid.');}
+  });
   }
-
-  async function checkMd  (mdFileDirectory) {
-    const options = {
-        "files": [ directory+"/"+mdFileDirectory ]
-      };
-      
-      markdownLint(options, function callback(err, result) {
-        if (!err) {
-          console.log(result.toString());
-        }
-        if(result.toString()==''){console.log("md is valid");}
-        else{throw new Error('MD file "'+mdFileDirectory+'" is not valid.');}
-      });
-
-  }
-  
