@@ -13,9 +13,9 @@ nodeDir.subdirs(directory, function(err, subDirs) {
     for (let i = 0; i < subDirs.length; i++) {
         console.log(subDirs[i]);
         var subDir =subDirs[i].substring(directory.length +1);
-        const pattern= new RegExp('([a-z]+) - '+subDir);
-        const htmlPattern= new RegExp('([a-z]+).html');
-        const mdPattern= new RegExp('([a-z]+).md');
+        const pattern= new RegExp('([A-Z][a-z]+) - '+subDir);
+        const htmlPattern= new RegExp('([A-Z][a-z]+).html');
+        const mdPattern= new RegExp('([A-Z][a-z]+).md');
 
         
         const files = fs.readdirSync(subDirs[i])
