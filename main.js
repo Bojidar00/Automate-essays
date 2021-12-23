@@ -26,10 +26,7 @@ nodeDir.subdirs(directory, function(err, subDirs) {
     }
 });
 
-
-
 async function checkHtml  (htmlFileDirectory) {
-    
     const options = {
       validator: 'WHATWG',
       format: 'text',
@@ -43,21 +40,18 @@ async function checkHtml  (htmlFileDirectory) {
     } catch (error) {
       console.error(error)
     }
+  }
+
+async function checkMd  (mdFileDirectory) {
+  const options = {
+      "files": [ directory+"/"+mdFileDirectory ]
+    };
     
+  markdownLint(options, function callback(err, result) {
+    if (!err) {
+      console.log(result.toString());
+    }
+    if(result.toString()==''){console.log("md is valid");}
+    else{throw new Error('MD file "'+mdFileDirectory+'" is not valid.');}
+  });
   }
-
-  async function checkMd  (mdFileDirectory) {
-    const options = {
-        "files": [ directory+"/"+mdFileDirectory ]
-      };
-      
-      markdownLint(options, function callback(err, result) {
-        if (!err) {
-          console.log(result.toString());
-        }
-        if(result.toString()==''){console.log("md is valid");}
-        else{throw new Error('MD file "'+mdFileDirectory+'" is not valid.');}
-      });
-
-  }
-  
