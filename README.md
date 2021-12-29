@@ -1,4 +1,14 @@
-# Automatic verificator of HTML and MD
+# Blockchain Bootcamp - Level 3 - 2021: Essays
+
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+
+## About the project
+
+Automatic verificator of HTML and MD.
+
+* Check for file name and format
+* Validate HTML and MD files
+* Automate git commit messages
 
 ## Commit Naming Rules
 
@@ -22,7 +32,7 @@ After every push to the repository, Github actions will check commits, file name
 
 ```bash
 npm install
-npm run check
+npm test
 ```
 
 ## File name check
