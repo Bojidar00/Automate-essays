@@ -23,9 +23,12 @@ feat: Add beta sequence
 
 ## How to use
 
-Create a folder inside /essays and give it a name.
-After that every file in this folder will have to follow the convention:
-"Name - folder name"
+The essays follow the naming convention: Author - Title.
+They are placed in subfolders of /essays with name Title.
+Example:
+```text
+/essays/Title/Ivan-Title
+```
 After every push to the repository, Github actions will check commits, file names and validity of html and md files.
 
 ## Run locally
