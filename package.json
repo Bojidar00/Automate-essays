@@ -1,12 +1,11 @@
 {
-  "name": "automate-essays",
+  "name": "automatic-verificator-of-html-and-md",
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "check": "node main.js",
-    "commit": "npm run check && npx cz"
+    "test": "node main.js",
+    "commit": "npm run test && npx cz"
   },
   "repository": {
     "type": "git",
